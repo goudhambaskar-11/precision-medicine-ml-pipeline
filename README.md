@@ -1,5 +1,3 @@
-# 🧬 Precision Medicine ML Pipeline
-
 ## Overview
 This repository contains an end-to-end machine learning pipeline
 using gene expression–style data, inspired by real-world precision
@@ -31,6 +29,7 @@ from data normalization to model interpretation.
 The dataset structure mimics qPCR / RNA-seq expression matrices.
 
 ---
+
 
 ## Pipeline Steps
 1. Data simulation
@@ -64,6 +63,19 @@ precision-medicine-ml-pipeline/
 
 ---
 
+## Results
+
+A Random Forest classifier was trained on variance-filtered gene expression data.
+The model achieved ~60% accuracy on held-out samples, outperforming random baseline.
+
+Feature importance analysis identified a small panel of genes driving prediction,
+with Gene_20 contributing the largest share of model decision-making (~29%),
+followed by Gene_18 and Gene_6.
+
+This reflects realistic polygenic disease architecture commonly observed in
+transcriptomic precision medicine studies.
+
+
 ## Future Work
 - PCA and clustering
 - Use of real RNA-seq / qPCR datasets
@@ -76,3 +88,4 @@ precision-medicine-ml-pipeline/
 **Goudham Baskar**  
 Background in molecular biology, gene expression analysis,
 and translational research.
+
