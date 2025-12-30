@@ -1,91 +1,93 @@
-## Overview
-This repository contains an end-to-end machine learning pipeline
-using gene expression–style data, inspired by real-world precision
-medicine and translational biology workflows.
+# Precision Medicine ML Pipeline (Gene Expression)
 
-The goal is to predict sample condition (e.g., healthy vs infected)
-based on gene expression features.
+This project demonstrates an end-to-end machine learning workflow
+inspired by transcriptomic precision medicine studies.
 
----
-
-## Biological Motivation
-Gene expression profiling is widely used in:
-- cancer diagnostics
-- infectious disease research
-- drug response prediction
-
-This project mirrors the analytical logic used in these domains,
-from data normalization to model interpretation.
+The pipeline simulates gene expression data, applies biologically
+motivated preprocessing, performs feature selection, and trains
+classification models to identify disease status.
 
 ---
 
-## Dataset
-- Simulated gene expression data
-- 100 samples × 20 genes
-- Binary condition label:
-  - `0` = Healthy
-  - `1` = Infected
+## Dataset Description
 
-The dataset structure mimics qPCR / RNA-seq expression matrices.
+- Simulated gene expression counts (Poisson-distributed)
+- Samples: 50 patients
+- Features: 100 genes
+- Label:
+  - 0 = Healthy
+  - 1 = Infected
 
----
-
-
-## Pipeline Steps
-1. Data simulation
-2. Feature normalization (z-score)
-3. Train–test split
-4. Logistic Regression (baseline model)
-5. Random Forest (non-linear model)
-6. Model evaluation
-7. Biological interpretation of important genes
+This setup mimics RNA-seq / qPCR-style count data commonly used in
+biomedical research.
 
 ---
 
-## Tools & Libraries
-- Python
-- NumPy
-- Pandas
-- scikit-learn
-- Matplotlib
-- Seaborn
+## Pipeline Overview
 
----
-
-## Repository Structure
-precision-medicine-ml-pipeline/
-│
-├── data/ # Datasets (simulated / real)
-├── notebooks/ # Analysis notebooks
-├── src/ # Reusable Python modules
-├── figures/ # Saved plots and figures
-├── README.md
+1. Gene expression simulation
+2. Log-normalization
+3. Train-test split
+4. Feature selection (variance threshold)
+5. Logistic Regression classification
+6. Random Forest classification
+7. Feature importance analysis
 
 ---
 
 ## Results
 
-A Random Forest classifier was trained on variance-filtered gene expression data.
-The model achieved ~60% accuracy on held-out samples, outperforming random baseline.
+- Logistic Regression achieved ~60% accuracy on held-out data,
+  outperforming random baseline.
 
-Feature importance analysis identified a small panel of genes driving prediction,
-with Gene_20 contributing the largest share of model decision-making (~29%),
-followed by Gene_18 and Gene_6.
+- Random Forest modeling identified a small panel of genes driving
+  disease prediction.
 
-This reflects realistic polygenic disease architecture commonly observed in
-transcriptomic precision medicine studies.
+Top contributing genes:
+- Gene_20
+- Gene_18
+- Gene_6
+- Gene_7
+- Gene_13
 
+Gene_20 alone contributed ~29% of total model decision-making,
+consistent with polygenic disease architectures observed in
+real-world transcriptomic studies.
+
+---
+
+## Key Biological Insight
+
+Variance-based feature selection must be applied prior to
+standardization. Applying variance filtering after z-score
+normalization removes meaningful biological signal.
+
+This reflects a common pitfall in transcriptomics pipelines.
+
+---
+
+## Technologies Used
+
+- Python
+- NumPy
+- Pandas
+- Matplotlib
+- scikit-learn
+- Jupyter Notebook
+
+---
 
 ## Future Work
-- PCA and clustering
-- Use of real RNA-seq / qPCR datasets
+
+- PCA visualization of expression profiles
+- ROC-AUC analysis
 - Cross-validation
-- Model explainability (SHAP / permutation importance)
+- Integration with real RNA-seq datasets
 
 ---
 
 ## Author
-**Goudham Baskar**  
-Background in molecular biology, gene expression analysis,
-and translational research.
+
+Goudham Baskar  
+MSc Graduate | Biomedical & Genomic Data Analysis  
 
